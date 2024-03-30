@@ -29,16 +29,13 @@ function isAllTrue(array, fn) {
     throw new Error('fn is not a function');
   }
 
-  let flag = true;
-
   for (let i = 0; i < array.length; i++) {
     if (!fn(array[i])) {
-      flag = false;
-      break;
+      return false;
     }
   }
 
-  return flag;
+  return true;
 }
 
 /*
@@ -62,8 +59,6 @@ function isAllTrue(array, fn) {
    isSomeTrue([1, 2, 3, 4, 5], n => n > 20) // вернет false (потому что в массиве нет ни одного элемента больше 20)
  */
 function isSomeTrue(array, fn) {
-  let flag = false;
-
   if (!Array.isArray(array) || array.length === 0) {
     throw new Error('empty array');
   }
@@ -74,12 +69,11 @@ function isSomeTrue(array, fn) {
 
   for (let i = 0; i < array.length; i++) {
     if (fn(array[i])) {
-      flag = true;
-      break;
+      return true;
     }
   }
 
-  return flag;
+  return false;
 }
 
 /*
